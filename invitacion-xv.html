@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Invitación a los XV años de Sofia">
+<title>Mis XV · Sofia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap">
+
+<style>
+/* ============================================================
+   Paleta "mar en calma" — una sola visión, sin modo oscuro
+   ============================================================ */
+:root{
+  --ink:#0F3B55;        /* azul de mar profundo: texto */
+  --sea:#2A86B2;        /* laguna */
+  --celeste:#7CC7E8;    /* celeste principal */
+  --sky:#DCF1FA;        /* cielo pálido */
+  --pearl:#FAFDFE;      /* nácar */
+  --sand:#EEE6D8;       /* arena */
+  --mist:#5A7C90;       /* texto secundario */
+  --line:rgba(15,59,85,.15);
+
+  --f-display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --f-script:"Pinyon Script","Snell Roundhand",cursive;
+  --f-body:"Jost","Century Gothic","Avenir Next",system-ui,sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+/* sin barra de desplazamiento (se sigue pudiendo deslizar) */
+html,body{scrollbar-width:none;-ms-overflow-style:none}
+html::-webkit-scrollbar,body::-webkit-scrollbar{display:none;width:0;height:0}
+body{
+  margin:0;color:var(--ink);font-family:var(--f-body);font-weight:300;
+  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  background:linear-gradient(180deg,#123F5A 0%,#0B2E44 100%) fixed;
+}
+.invite{max-width:31rem;margin:0 auto;background:var(--pearl);overflow:hidden;
+  box-shadow:0 0 80px rgba(0,0,0,.35)}
+h1,h2,h3,p{margin:0}
+.inner{padding-inline:26px}
+
+.eyebrow{
+  font-size:.68rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--sea);
+}
+.title{
+  font-family:var(--f-display);font-weight:400;font-size:2.1rem;line-height:1.1;
+  text-wrap:balance;letter-spacing:.01em;
+}
+.title em{font-style:italic;color:var(--sea)}
+
+/* etiqueta de boceto */
+.draft-tag{
+  position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:50;
+  font:500 .6rem/1 var(--f-body);letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink);background:rgba(250,253,254,.86);backdrop-filter:blur(6px);
+  padding:7px 12px;border-radius:99px;border:1px solid var(--line);white-space:nowrap;
+}
+
+/* ============================================================
+   PORTADA — el horizonte: XV sobre la línea del mar y su reflejo
+   ============================================================ */
+.hero{position:relative;display:grid;grid-template-rows:auto auto;color:var(--ink)}
+.sky{
+  position:relative;padding:92px 20px 0;text-align:center;
+  background:linear-gradient(180deg,#CBEAF7 0%,#E6F6FC 70%,#F4FBFE 100%);
+  overflow:hidden;
+}
+.sun{
+  position:absolute;left:50%;bottom:-70px;width:220px;height:220px;transform:translateX(-50%);
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,1) 0%,rgba(255,255,255,.75) 38%,rgba(255,255,255,0) 70%);
+}
+.hero .mis{position:relative;font-size:.72rem;font-weight:500;letter-spacing:.42em;text-transform:uppercase;color:var(--sea)}
+.hero .name{
+  position:relative;font-family:var(--f-script);font-weight:400;
+  font-size:clamp(3.4rem,17vw,4.6rem);line-height:1.1;margin-top:6px;color:var(--ink);
+}
+.xv{
+  position:relative;display:block;font-family:var(--f-display);font-weight:500;font-optical-sizing:none;font-variation-settings:"opsz" 14;
+  font-size:clamp(7.5rem,40vw,15rem);line-height:.74;letter-spacing:.02em;
+  margin-top:10px;color:var(--ink);
+}
+.sea{
+  position:relative;text-align:center;padding:0 20px 58px;
+  background:linear-gradient(180deg,#8ED0EC 0%,#5DB4DB 30%,#2E8CB9 70%,#1D6C98 100%);
+  overflow:hidden;
+}
+.sea::before{ /* línea del horizonte */
+  content:"";position:absolute;left:0;right:0;top:0;height:1px;background:rgba(255,255,255,.9);
+}
+.reflection{
+  display:block;font-family:var(--f-display);font-weight:500;font-optical-sizing:none;font-variation-settings:"opsz" 14;
+  font-size:clamp(7.5rem,40vw,15rem);line-height:.74;letter-spacing:.02em;
+  color:#fff;transform:scaleY(-1);opacity:.5;
+  -webkit-mask-image:linear-gradient(to top,rgba(0,0,0,.95),rgba(0,0,0,0) 85%);
+          mask-image:linear-gradient(to top,rgba(0,0,0,.95),rgba(0,0,0,0) 85%);
+  filter:url(#ripple);
+  user-select:none;
+}
+.glint{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;opacity:0;
+  animation:glint 4s ease-in-out infinite}
+@keyframes glint{0%,100%{opacity:0}45%{opacity:.95}55%{opacity:.2}}
+.hero .date{
+  position:relative;margin-top:18px;color:#fff;
+  font-size:.74rem;font-weight:400;letter-spacing:.34em;text-transform:uppercase;
+}
+.hero .date b{font-weight:500}
+.scroll-cue{
+  position:relative;display:block;margin:26px auto 0;width:1px;height:38px;
+  background:linear-gradient(rgba(255,255,255,.9),rgba(255,255,255,0));
+}
+
+/* ola divisoria */
+.wave{display:block;width:100%;height:28px}
+
+/* ============================================================
+   SECCIONES
+   ============================================================ */
+section{padding-block:56px}
+.intro{text-align:center;background:var(--pearl)}
+.intro .blessing{margin-bottom:26px}
+.quote{
+  font-family:var(--f-display);font-style:italic;font-size:1.5rem;line-height:1.45;
+  text-wrap:balance;color:var(--ink);
+}
+.intro p.body{margin:22px auto 0;max-width:24em;color:var(--mist);font-size:1.02rem}
+
+.family{display:grid;grid-template-columns:1fr;gap:22px;margin-top:40px;text-align:center}
+.family .label{font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sea);font-weight:500}
+.family p.names{margin-top:8px;font-family:var(--f-display);font-size:1.02rem;line-height:1.5}
+
+/* marco en arco para la foto */
+.arch-wrap{padding:8px 34px 0;background:var(--pearl)}
+.arch{
+  position:relative;aspect-ratio:3/4;max-width:100%;
+  border-radius:999px 999px 6px 6px;overflow:hidden;
+  background:
+    radial-gradient(ellipse at 50% 115%,rgba(255,255,255,.55),transparent 55%),
+    linear-gradient(180deg,#CFEBF7 0%,#9FD7EE 55%,#5EB3DA 100%);
+  outline:1px solid var(--line);outline-offset:8px;
+  display:grid;place-items:center;text-align:center;
+}
+.arch span{font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(15,59,85,.55);font-weight:500}
+.arch svg{position:absolute;left:0;right:0;bottom:0;width:100%;height:32%}
+.arch img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+
+/* cuenta regresiva */
+.countdown{text-align:center;background:var(--sky)}
+.clock{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:22px}
+.clock div{padding-block:10px}
+.clock .n{
+  display:block;font-family:var(--f-display);font-size:2.35rem;line-height:1;
+  font-variant-numeric:lining-nums tabular-nums;color:var(--ink);
+}
+.clock .u{display:block;margin-top:8px;font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mist)}
+.clock div + div{border-left:1px solid var(--line)}
+.cal-btn{margin-top:28px}
+
+/* dónde y cuándo */
+.venues{background:var(--pearl)}
+.venues header{text-align:center;margin-bottom:34px;display:grid;gap:10px}
+.venue{
+  display:grid;grid-template-columns:4.2rem 1fr;gap:18px;align-items:start;
+  padding-block:24px;border-top:1px solid var(--line);
+}
+.venue:last-child{border-bottom:1px solid var(--line)}
+.venue .time{font-family:var(--f-display);font-size:1.5rem;line-height:1;padding-top:4px}
+.venue .time small{display:block;margin-top:6px;font-family:var(--f-body);font-size:.6rem;letter-spacing:.24em;color:var(--mist)}
+.venue h3{font-size:.68rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--sea)}
+.venue .place{margin-top:6px;font-family:var(--f-display);font-size:1.3rem;line-height:1.25}
+.venue .addr{margin-top:4px;color:var(--mist);font-size:.92rem}
+.venue .directions{margin-top:10px;font-size:.88rem;line-height:1.5;color:var(--ink)}
+.link{
+  display:inline-block;margin-top:12px;font-size:.72rem;font-weight:500;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ink);text-decoration:none;
+  border-bottom:1px solid var(--celeste);padding-bottom:3px;
+}
+.link:hover{color:var(--sea);border-color:var(--sea)}
+
+/* vestuario */
+.dress{text-align:center;background:var(--pearl)}
+.dress .title{margin-top:10px}
+.dress p.body{margin:12px auto 0;max-width:23em;color:var(--mist)}
+.swatches{display:flex;justify-content:center;gap:18px;margin-top:28px;flex-wrap:wrap}
+.swatch{display:grid;justify-items:center;gap:8px;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mist)}
+.swatch i{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:block}
+.swatch.reserved i{position:relative}
+.swatch.reserved i::after{ /* tachado: color reservado */
+  content:"";position:absolute;left:50%;top:-4px;bottom:-4px;width:1px;background:var(--ink);transform:rotate(45deg);
+}
+.sand-note{
+  margin:30px auto 0;max-width:23em;padding:14px 18px;font-size:.9rem;color:var(--ink);
+  background:var(--sand);border-radius:3px;
+}
+
+/* regalo */
+.gift{text-align:center;background:var(--sky)}
+.gift p.body{margin:14px auto 0;max-width:22em;color:var(--mist)}
+.envelope-icon{width:44px;height:44px;margin:0 auto 14px;display:block;color:var(--sea)}
+
+/* confirmación */
+.rsvp{background:var(--pearl)}
+.rsvp header{text-align:center;display:grid;gap:10px;margin-bottom:30px}
+.rsvp header p.body{color:var(--mist)}
+form{display:grid;gap:22px}
+.field label,.field legend{display:block;margin-bottom:8px;font-size:.66rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--sea)}
+fieldset{border:0;margin:0;padding:0}
+input[type=text],input[type=number]{
+  width:100%;font:inherit;font-size:1.05rem;color:var(--ink);
+  background:transparent;border:0;border-bottom:1px solid rgba(15,59,85,.28);
+  padding:8px 0;border-radius:0;
+}
+input::placeholder{color:rgba(90,124,144,.6)}
+input:focus{outline:none;border-bottom-color:var(--sea)}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.choice label{
+  display:flex;align-items:center;justify-content:center;gap:8px;min-height:3.1rem;cursor:pointer;
+  font-size:.86rem;letter-spacing:.02em;text-transform:none;color:var(--ink);font-weight:400;
+  border:1px solid var(--line);background:#fff;border-radius:2px;margin:0;
+}
+.choice label:has(input:checked){border-color:var(--sea);background:var(--sky)}
+.choice input{accent-color:var(--sea)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font:500 .76rem/1 var(--f-body);letter-spacing:.24em;text-transform:uppercase;
+  padding:17px 26px;border-radius:2px;cursor:pointer;text-decoration:none;
+  border:1px solid var(--ink);background:var(--ink);color:var(--pearl);
+  transition:background-color .2s,color .2s;
+}
+.btn:hover{background:var(--sea);border-color:var(--sea)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--pearl)}
+form .btn{width:100%}
+.deadline{text-align:center;margin-top:14px;font-size:.84rem;color:var(--mist)}
+.thanks{text-align:center;padding:26px 10px;background:var(--sky)}
+.thanks p:first-child{font-family:var(--f-display);font-size:1.5rem}
+.thanks p + p{margin-top:6px;color:var(--mist)}
+
+/* cierre */
+.closing{
+  position:relative;text-align:center;color:#fff;padding-block:64px 70px;
+  background:linear-gradient(180deg,#2E8CB9 0%,#1B638C 60%,#134B6C 100%);
+}
+.closing .name{font-family:var(--f-script);font-size:3.4rem;line-height:1}
+.closing .xv-small{display:block;margin-top:6px;font-family:var(--f-display);font-size:1rem;letter-spacing:.5em;padding-left:.5em}
+.closing p.body{margin:22px auto 0;max-width:20em;font-size:.95rem;opacity:.85}
+
+/* ============================================================
+   SOBRE DE ENTRADA
+   ============================================================ */
+body.locked{overflow:hidden}
+.envelope{
+  position:fixed;inset:0;z-index:100;display:grid;place-items:center;overflow:hidden;
+  background:linear-gradient(160deg,#EEF9FD 0%,#C9E9F6 100%);
+  transition:opacity 1s .7s,visibility 1s .7s;
+}
+.envelope::before,.envelope::after{ /* solapas laterales */
+  content:"";position:absolute;inset:38% -18% -15%;
+  background:#CBEAF7;border:1px solid rgba(42,134,178,.22);transform:rotate(34deg);
+}
+.envelope::after{transform:rotate(-34deg);background:#C4E6F5}
+.env-flap{
+  position:absolute;top:0;z-index:4;width:120%;height:52%;
+  background:#F5FCFE;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;
+  filter:drop-shadow(0 8px 10px rgba(15,59,85,.12));
+  transition:transform .9s cubic-bezier(.7,0,.2,1);
+}
+.env-letter{
+  position:absolute;top:21%;z-index:5;width:min(80vw,24rem);
+  padding:2.4rem 1rem 3.6rem;text-align:center;background:var(--pearl);
+  border:1px solid rgba(42,134,178,.28);
+  box-shadow:0 18px 45px rgba(15,59,85,.16);
+  transition:transform 1s cubic-bezier(.2,.7,.2,1) .18s;
+}
+.env-letter .name{font-family:var(--f-script);font-size:clamp(2.8rem,13vw,3.5rem);line-height:1.1;margin-top:8px;color:var(--ink)}
+.env-letter .when{margin-top:10px;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mist)}
+.env-letter .when b{font-family:var(--f-display);font-weight:400;font-size:1.05rem;letter-spacing:.12em;color:var(--ink)}
+.seal{
+  position:absolute;left:50%;bottom:0;transform:translate(-50%,50%);z-index:8;width:4.6rem;height:4.6rem;border-radius:50%;cursor:pointer;
+  display:grid;place-items:center;color:#D6EFF9;background:var(--ink);
+  border:3px double rgba(214,239,249,.7);
+  box-shadow:0 8px 22px rgba(15,59,85,.38);
+  transition:transform .25s ease;
+}
+.seal:hover{transform:translate(-50%,50%) scale(1.05)}
+.seal svg{width:28px;height:28px}
+.env-hint{
+  position:absolute;bottom:12%;left:0;right:0;z-index:9;text-align:center;
+  font-size:.66rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:rgba(15,59,85,.7);
+}
+.envelope.is-open{opacity:0;visibility:hidden}
+.envelope.is-open .env-flap{transform:rotateX(180deg)}
+.envelope.is-open .env-letter{transform:translateY(-78vh)}
+
+/* ============================================================
+   COSITAS QUE CAEN: perlas y destellos
+   ============================================================ */
+.falling{position:fixed;inset:0;z-index:20;pointer-events:none;overflow:hidden}
+.bit{position:absolute;top:-2rem;opacity:0;animation:fall linear infinite}
+.bit.pearl{
+  width:9px;height:9px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fff 0%,#EEF6F9 35%,#C4D9E2 75%,#A3C0CD 100%);
+  box-shadow:0 1px 2px rgba(15,59,85,.2);
+}
+.bit.fleck{width:4px;height:9px;border-radius:99px;background:#8FD0EC}
+.bit.star{width:10px;height:10px;background:#fff;
+  clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%)}
+@keyframes fall{
+  0%{opacity:0;transform:translate(0,-5vh) rotate(0)}
+  10%{opacity:.85}
+  50%{transform:translate(22px,50vh) rotate(180deg)}
+  90%{opacity:.7}
+  100%{opacity:0;transform:translate(-8px,106vh) rotate(380deg)}
+}
+
+/* botón de música */
+.music{
+  position:fixed;top:12px;right:14px;z-index:60;width:38px;height:38px;border-radius:50%;
+  display:grid;place-items:center;cursor:pointer;color:var(--ink);
+  background:rgba(250,253,254,.85);backdrop-filter:blur(6px);border:1px solid var(--line);
+}
+.music svg{width:15px;height:15px}
+[hidden]{display:none!important}
+
+@media (prefers-reduced-motion:reduce){
+  .bit{display:none}
+  .env-flap,.env-letter,.envelope{transition-duration:.01ms}
+}
+
+
+/* ============================================================
+   ESCRITORIO — la invitación ocupa la pantalla, no una tira
+   ============================================================ */
+@media (min-width:860px){
+  .invite{max-width:none;box-shadow:none}
+  .inner{max-width:46rem;margin-inline:auto}
+  .wave{height:54px}
+
+  .sky{padding-top:120px}
+  .hero .name{font-size:6rem}
+  .sun{width:420px;height:420px;bottom:-140px}
+  .sea{padding-bottom:80px}
+  .hero .date{font-size:.9rem;margin-top:28px}
+
+  section{padding-block:84px}
+  .title{font-size:2.9rem}
+  .eyebrow{font-size:.74rem}
+  .quote{font-size:2.15rem;max-width:26em;margin-inline:auto}
+  .intro p.body{font-size:1.15rem;max-width:30em}
+  .family{max-width:36rem;margin-inline:auto;margin-top:52px}
+  .family p.names{font-size:1.2rem}
+
+  .arch-wrap{padding-top:20px}
+  .arch{max-width:24rem;margin-inline:auto}
+
+  .clock{max-width:38rem;margin-inline:auto}
+  .clock .n{font-size:3.6rem}
+  .clock .u{font-size:.68rem}
+
+  .venues .inner{max-width:60rem}
+  .venue-grid{max-width:34rem;margin-inline:auto}
+
+  .venue{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .venue .place{font-size:1.55rem}
+
+
+  .dress p.body{font-size:1.08rem}
+  .swatch i{width:56px;height:56px}
+  .swatches{gap:28px}
+
+  .rsvp form,.rsvp .thanks{max-width:32rem;margin-inline:auto}
+
+  .closing{padding-block:90px 96px}
+  .closing .name{font-size:5rem}
+
+  .env-letter{width:28rem;padding:3rem 1.5rem 4rem}
+  .env-letter .name{font-size:4.2rem}
+}
+
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--sea);outline-offset:3px}
+
+@media (prefers-reduced-motion:reduce){
+  .glint{animation:none;opacity:.6}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<!-- filtro de ondas para el reflejo -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="ripple" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence id="turb" type="fractalNoise" baseFrequency="0.004 0.08" numOctaves="2" seed="4">
+      <animate id="turbAnim" attributeName="baseFrequency" dur="10s"
+               values="0.004 0.08;0.006 0.1;0.004 0.08" repeatCount="indefinite"/>
+    </feTurbulence>
+    <feDisplacementMap in="SourceGraphic" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+
+<!-- ===================== SOBRE DE ENTRADA ===================== -->
+<div class="envelope" id="envelope">
+  <div class="env-flap"></div>
+  <div class="env-letter">
+    <p class="eyebrow">Tienes una invitación</p>
+    <p class="name">Sofia</p>
+    <p class="when">Mis XV años · <b>14 · 11 · 2026</b></p>
+    <button class="seal" id="openBtn" type="button" aria-label="Abrir invitación">
+      <!-- concha -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 19.5 4.6 12.4a7.4 7.4 0 0 1 14.8 0Z"/>
+        <path d="M12 19.5V5M12 19.5 8.2 6.1M12 19.5l3.8-13.4M12 19.5 5.5 9.2M12 19.5l6.5-10.3"/>
+        <path d="M10.2 19.5h3.6"/>
+      </svg>
+    </button>
+  </div>
+  <p class="env-hint">Toca el sello para abrir</p>
+</div>
+
+<!-- perlas y destellos que caen -->
+<div class="falling" id="falling" aria-hidden="true"></div>
+
+<!-- música: pon la canción en CONFIG.musica -->
+<audio id="bgm" loop preload="auto"></audio>
+<button class="music" id="musicBtn" type="button" aria-label="Pausar música" hidden>
+  <svg id="musicIcon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+</button>
+
+<div class="invite">
+
+  <!-- ===================== PORTADA ===================== -->
+  <header class="hero">
+    <div class="sky">
+      <div class="sun" aria-hidden="true"></div>
+      <p class="mis">Mis quince años</p>
+      <h1 class="name">Sofia</h1>
+      <span class="xv" aria-hidden="true">XV</span>
+    </div>
+    <div class="sea">
+      <span class="reflection" aria-hidden="true">XV</span>
+      <i class="glint" style="left:18%;top:22%;animation-delay:.2s" aria-hidden="true"></i>
+      <i class="glint" style="left:72%;top:16%;animation-delay:1.4s" aria-hidden="true"></i>
+      <i class="glint" style="left:40%;top:44%;animation-delay:2.6s" aria-hidden="true"></i>
+      <i class="glint" style="left:84%;top:52%;animation-delay:3.3s" aria-hidden="true"></i>
+      <i class="glint" style="left:10%;top:60%;animation-delay:1.9s" aria-hidden="true"></i>
+      <p class="date"><b>Sábado 14</b> · Noviembre · 2026</p>
+      <span class="scroll-cue" aria-hidden="true"></span>
+    </div>
+  </header>
+
+  <!-- ===================== FRASE + FAMILIA ===================== -->
+  <section class="intro">
+    <div class="inner">
+      <p class="eyebrow blessing">Con la bendición de Dios y de mis padres</p>
+      <p class="quote">“Hay sueños que llegan como las olas: despacio, y de pronto, ya están a tus pies.”</p>
+      <p class="body">Te invito a celebrar conmigo mis quince años, frente al mar y rodeada de las personas que más quiero.</p>
+
+      <div class="family">
+        <div>
+          <p class="label">Mis padres</p>
+          <p class="names">Lizeth del Carmen<br>Cruz Miguel</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="arch-wrap">
+    <div class="arch">
+      <!-- FOTO: descomenta y pon la ruta de la foto (vertical, 3:4) -->
+      <!-- <img src="foto-principal.jpg" alt="Sofia"> -->
+      <span>Foto de la quinceañera</span>
+      <svg viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 40 C 50 25, 100 55, 150 40 S 250 25, 300 40 L300 100 L0 100Z" fill="rgba(255,255,255,.28)"/>
+        <path d="M0 62 C 60 48, 110 76, 160 62 S 260 50, 300 62 L300 100 L0 100Z" fill="rgba(238,230,216,.9)"/>
+      </svg>
+    </div>
+  </div>
+
+  <svg class="wave" viewBox="0 0 400 28" preserveAspectRatio="none" aria-hidden="true" style="background:var(--pearl);margin-top:48px">
+    <path d="M0 14 C 50 0, 100 28, 150 14 S 250 0, 300 14 S 380 26, 400 14 L400 28 L0 28Z" fill="#DCF1FA"/>
+  </svg>
+
+  <!-- ===================== CUENTA REGRESIVA ===================== -->
+  <section class="countdown" style="padding-top:36px">
+    <div class="inner">
+      <p class="eyebrow">Faltan</p>
+      <div class="clock" id="clock" aria-live="off">
+        <div><span class="n" id="cd-d">54</span><span class="u">Días</span></div>
+        <div><span class="n" id="cd-h">00</span><span class="u">Horas</span></div>
+        <div><span class="n" id="cd-m">00</span><span class="u">Min</span></div>
+        <div><span class="n" id="cd-s">00</span><span class="u">Seg</span></div>
+      </div>
+      <a class="btn ghost cal-btn" id="calBtn" target="_blank" rel="noopener">Agregar a mi calendario</a>
+    </div>
+  </section>
+
+  <svg class="wave" viewBox="0 0 400 28" preserveAspectRatio="none" aria-hidden="true" style="background:var(--sky)">
+    <path d="M0 14 C 60 28, 110 0, 170 14 S 280 28, 330 12 S 390 6, 400 14 L400 28 L0 28Z" fill="#FAFDFE"/>
+  </svg>
+
+  <!-- ===================== DÓNDE Y CUÁNDO ===================== -->
+  <section class="venues" style="padding-top:36px">
+    <div class="inner">
+      <header>
+        <p class="eyebrow">Dónde y cuándo</p>
+        <h2 class="title">Una noche <em>frente al mar</em></h2>
+      </header>
+
+      <div class="venue-grid">
+      <article class="venue">
+        <p class="time">7:00<small>PM</small></p>
+        <div>
+          <h3>Celebración</h3>
+          <p class="place">Condominio Costa Bella</p>
+          <p class="addr">Santa Marta</p>
+          <p class="addr directions">Entran por el Irotama y, una cuadra después del Hotel Hilton, se bajan en el condominio.</p>
+          <a class="link" target="_blank" rel="noopener"
+             href="https://maps.app.goo.gl/Hvmrq76jGX7SGqhQA">Cómo llegar</a>
+        </div>
+      </article>
+      </div>
+    </div>
+  </section>
+
+    <!-- ===================== VESTUARIO ===================== -->
+  <section class="dress" style="padding-top:44px">
+    <div class="inner">
+      <p class="eyebrow">Código de vestuario</p>
+      <h2 class="title">Elegante <em>playero</em></h2>
+      <p class="body">Tonos claros y telas frescas: lino, algodón, gasa.</p>
+      <div class="swatches">
+        <span class="swatch"><i style="background:#FFFFFF"></i>Blanco</span>
+        <span class="swatch"><i style="background:#EEE6D8"></i>Arena</span>
+        <span class="swatch"><i style="background:#D9D2C3"></i>Lino</span>
+        <span class="swatch reserved"><i style="background:#7CC7E8"></i>Celeste</span>
+      </div>
+      <p class="body" style="margin-top:14px;font-size:.88rem">El celeste está reservado para la quinceañera.</p>
+      <p class="sand-note">La celebración es frente al mar: te recomendamos sandalia o tacón ancho.</p>
+    </div>
+  </section>
+
+  <svg class="wave" viewBox="0 0 400 28" preserveAspectRatio="none" aria-hidden="true" style="background:var(--pearl)">
+    <path d="M0 14 C 50 0, 100 28, 150 14 S 250 0, 300 14 S 380 26, 400 14 L400 28 L0 28Z" fill="#DCF1FA"/>
+  </svg>
+
+  <!-- ===================== REGALO ===================== -->
+  <section class="gift" style="padding-top:36px">
+    <div class="inner">
+      <svg class="envelope-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+        <rect x="6" y="12" width="36" height="25" rx="1.5"/>
+        <path d="M6 13.5 24 27l18-13.5"/>
+        <circle cx="24" cy="27" r="3.2" fill="#FAFDFE"/>
+      </svg>
+      <p class="eyebrow">Tu presencia es el mejor regalo</p>
+      <h2 class="title" style="margin-top:10px">Lluvia de sobres</h2>
+      <p class="body">Si deseas tener un detalle conmigo, habrá un cofre para sobres en la recepción.</p>
+    </div>
+  </section>
+
+  <svg class="wave" viewBox="0 0 400 28" preserveAspectRatio="none" aria-hidden="true" style="background:var(--sky)">
+    <path d="M0 14 C 60 28, 110 0, 170 14 S 280 28, 330 12 S 390 6, 400 14 L400 28 L0 28Z" fill="#FAFDFE"/>
+  </svg>
+
+  <!-- ===================== CONFIRMACIÓN ===================== -->
+  <section class="rsvp" style="padding-top:36px">
+    <div class="inner">
+      <header>
+        <p class="eyebrow">Confirma tu asistencia</p>
+        <h2 class="title">¿Me acompañas?</h2>
+      </header>
+
+      <form id="rsvpForm">
+        <div class="field">
+          <label for="rsvp-name">Tu nombre</label>
+          <input id="rsvp-name" name="name" type="text" required placeholder="Nombre y apellido" autocomplete="name">
+        </div>
+        <fieldset class="field">
+          <legend>Asistencia</legend>
+          <div class="choice">
+            <label for="rsvp-yes"><input id="rsvp-yes" type="radio" name="att" value="yes" required checked>Sí, asistiré</label>
+            <label for="rsvp-no"><input id="rsvp-no" type="radio" name="att" value="no">No podré ir</label>
+          </div>
+        </fieldset>
+        <div class="field" id="guestsField">
+          <label for="rsvp-guests">¿Cuántas personas, contándote?</label>
+          <input id="rsvp-guests" name="guests" type="number" min="1" max="10" value="1" inputmode="numeric">
+        </div>
+        <button class="btn" type="submit">Confirmar por WhatsApp</button>
+      </form>
+      <div class="thanks" id="thanks" hidden>
+        <p>¡Gracias!</p>
+        <p>Tu confirmación se abrió en WhatsApp.</p>
+      </div>
+      <p class="deadline">Por favor confirma antes del 31 de octubre.</p>
+    </div>
+  </section>
+
+  <!-- ===================== CIERRE ===================== -->
+  <footer class="closing">
+    <p class="name">Sofia</p>
+    <span class="xv-small">XV</span>
+    <p class="body">Gracias por ser parte de mi noche frente al mar.</p>
+  </footer>
+
+</div>
+
+<script>
+/* ===== CONFIGURACIÓN ===== */
+const CONFIG = {
+  quinceanera: "Sofia",
+  fechaEvento: "2026-11-14T19:00:00-05:00",   // hora de la recepción, Colombia
+  whatsapp: "573332320899",
+  musica: "If%20Only.mp3"   // ← link o ruta del .mp3 cuando el cliente elija la canción (ej. "assets/cancion.mp3")
+};
+
+/* ----- sobre + música ----- */
+const envelope = document.getElementById('envelope');
+const audio = document.getElementById('bgm');
+const musicBtn = document.getElementById('musicBtn');
+const ICON_PAUSE = '<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>';
+const ICON_PLAY  = '<path d="M7 4.5v15l12-7.5z"/>';
+document.body.classList.add('locked');
+if (CONFIG.musica) audio.src = CONFIG.musica;
+
+function setMusicIcon(playing){
+  document.getElementById('musicIcon').innerHTML = playing ? ICON_PAUSE : ICON_PLAY;
+  musicBtn.setAttribute('aria-label', playing ? 'Pausar música' : 'Reproducir música');
+}
+document.getElementById('openBtn').addEventListener('click', () => {
+  envelope.classList.add('is-open');
+  document.body.classList.remove('locked');
+  if (CONFIG.musica){
+    musicBtn.hidden = false;
+    audio.play().then(() => setMusicIcon(true)).catch(() => setMusicIcon(false));
+  }
+  setTimeout(() => envelope.remove(), 2000);
+});
+musicBtn.addEventListener('click', () => {
+  if (audio.paused) audio.play().then(() => setMusicIcon(true)).catch(() => {});
+  else { audio.pause(); setMusicIcon(false); }
+});
+
+/* ----- perlas y destellos que caen ----- */
+(function(){
+  const box = document.getElementById('falling');
+  const kinds = ['pearl','fleck','star','pearl','fleck'];
+  for (let i = 0; i < 20; i++){
+    const b = document.createElement('i');
+    b.className = 'bit ' + kinds[i % kinds.length];
+    b.style.left = ((i * 37 + 7) % 100) + '%';
+    const dur = 11 + (i % 5) * 1.3;
+    b.style.animationDuration = dur + 's';
+    b.style.animationDelay = (-(i * 0.83)) + 's';
+    b.style.scale = (0.7 + (i % 3) * 0.2).toString();
+    box.appendChild(b);
+  }
+})();
+
+/* ----- cuenta regresiva ----- */
+const target = new Date(CONFIG.fechaEvento).getTime();
+const pad = n => String(n).padStart(2, '0');
+function tick(){
+  let diff = Math.max(0, target - Date.now());
+  const d = Math.floor(diff / 864e5); diff -= d * 864e5;
+  const h = Math.floor(diff / 36e5);  diff -= h * 36e5;
+  const m = Math.floor(diff / 6e4);   diff -= m * 6e4;
+  const s = Math.floor(diff / 1e3);
+  document.getElementById('cd-d').textContent = d;
+  document.getElementById('cd-h').textContent = pad(h);
+  document.getElementById('cd-m').textContent = pad(m);
+  document.getElementById('cd-s').textContent = pad(s);
+}
+tick(); setInterval(tick, 1000);
+
+/* ----- agregar al calendario (Google Calendar) ----- */
+(function(){
+  const start = new Date(CONFIG.fechaEvento);
+  const end = new Date(start.getTime() + 6 * 36e5);
+  const fmt = d => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  const url = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+    + '&text=' + encodeURIComponent(`XV de ${CONFIG.quinceanera}`)
+    + '&dates=' + fmt(start) + '/' + fmt(end)
+    + '&location=' + encodeURIComponent('Condominio Costa Bella, Santa Marta · https://maps.app.goo.gl/jpEV9kgHF5eCxrbX6');
+  document.getElementById('calBtn').href = url;
+})();
+
+/* ----- confirmación ----- */
+const form = document.getElementById('rsvpForm');
+const guestsField = document.getElementById('guestsField');
+form.addEventListener('change', () => {
+  guestsField.hidden = form.att.value === 'no';
+});
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const name = form.name.value.trim();
+  if (!name) return;
+  const yes = form.att.value === 'yes';
+  const n = parseInt(form.guests.value, 10) || 1;
+  const msg = yes
+    ? (n > 1
+        ? `¡Hola! Soy ${name} 😊 Te confirmo que sí vamos a los XV de ${CONFIG.quinceanera}, vamos a ser ${n} personas. ¡Nos vemos allá!`
+        : `¡Hola! Soy ${name} 😊 Te confirmo que sí voy a los XV de ${CONFIG.quinceanera}. ¡Nos vemos allá!`)
+    : `¡Hola! Soy ${name}. Qué pena, pero no voy a poder ir a los XV de ${CONFIG.quinceanera} 😔 Le deseo que la pase increíble en su noche.`;
+  window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+  form.hidden = true;
+  document.getElementById('thanks').hidden = false;
+});
+
+/* ----- movimiento reducido: detener el oleaje del reflejo ----- */
+if (matchMedia('(prefers-reduced-motion: reduce)').matches){
+  document.getElementById('turbAnim')?.remove();
+}
+</script>
+</body>
+</html>
